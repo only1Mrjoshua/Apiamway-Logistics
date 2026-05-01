@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `accountTypeIntent` enum('shipper','fleet_owner') DEFAULT 'shipper';

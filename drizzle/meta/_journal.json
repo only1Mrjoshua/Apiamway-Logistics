@@ -1,0 +1,104 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1769357316545,
+      "tag": "0000_steep_shockwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1769357405361,
+      "tag": "0001_sharp_champions",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1769939864082,
+      "tag": "0002_motionless_lifeguard",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1769993726116,
+      "tag": "0003_nebulous_scarecrow",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1770061155041,
+      "tag": "0004_early_silver_centurion",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1770062612553,
+      "tag": "0005_redundant_living_lightning",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1770242530334,
+      "tag": "0006_milky_proteus",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1770249629580,
+      "tag": "0007_oval_rocket_racer",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1770681632886,
+      "tag": "0008_silky_ozymandias",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1770721395614,
+      "tag": "0009_rich_blockbuster",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1770722765418,
+      "tag": "0010_tidy_wither",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1773921574981,
+      "tag": "0011_last_dark_beast",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1774208999890,
+      "tag": "0012_happy_spiral",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1774226247647,
+      "tag": "0013_superb_avengers",
+      "breakpoints": true
+    }
+  ]
+}

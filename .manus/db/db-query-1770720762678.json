@@ -1,0 +1,9 @@
+{
+  "query": "-- Step 1: Convert to VARCHAR\nALTER TABLE devices MODIFY COLUMN status VARCHAR(20) NOT NULL DEFAULT 'available';\n\n-- Step 2: Update 'active' to 'available'\nUPDATE devices SET status = 'available' WHERE status = 'active';\n\n-- Step 3: Add label column\nALTER TABLE devices ADD COLUMN label VARCHAR(50) AFTER name;\n\n-- Step 4: Convert back to ENUM with new values\nALTER TABLE devices MODIFY COLUMN status ENUM('available', 'in_transit', 'maintenance', 'inactive') NOT NULL DEFAULT 'available';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 21qwqa3fGSy7fki.cc8701c17183 --database 96zJ69HnhoCcXrCsRpdDxD --execute -- Step 1: Convert to VARCHAR\nALTER TABLE devices MODIFY COLUMN status VARCHAR(20) NOT NULL DEFAULT 'available';\n\n-- Step 2: Update 'active' to 'available'\nUPDATE devices SET status = 'available' WHERE status = 'active';\n\n-- Step 3: Add label column\nALTER TABLE devices ADD COLUMN label VARCHAR(50) AFTER name;\n\n-- Step 4: Convert back to ENUM with new values\nALTER TABLE devices MODIFY COLUMN status ENUM('available', 'in_transit', 'maintenance', 'inactive') NOT NULL DEFAULT 'available';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1822
+}

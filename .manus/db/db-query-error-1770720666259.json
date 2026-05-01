@@ -1,0 +1,8 @@
+{
+  "query": "UPDATE devices SET status = 'available' WHERE status = 'active';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 21qwqa3fGSy7fki.cc8701c17183 --database 96zJ69HnhoCcXrCsRpdDxD --execute UPDATE devices SET status = 'available' WHERE status = 'active';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1265 (01000) at line 1: Data truncated for column '%s' at row %d"
+  ]
+}

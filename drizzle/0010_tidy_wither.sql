@@ -1,0 +1,1 @@
+ALTER TABLE `devices` MODIFY COLUMN `status` enum('available','in_transit','maintenance','inactive') NOT NULL DEFAULT 'available';

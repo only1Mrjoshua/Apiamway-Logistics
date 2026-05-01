@@ -1,0 +1,1 @@
+ALTER TABLE `payments` ADD `paymentProvider` enum('paystack','opay') DEFAULT 'paystack' NOT NULL;

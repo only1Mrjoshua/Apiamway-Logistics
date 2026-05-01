@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `orders`\n  ADD COLUMN `cancellationReason` text,\n  ADD COLUMN `cancelledAt` timestamp NULL,\n  ADD COLUMN `cancelledBy` int NULL,\n  ADD COLUMN `archivedAt` timestamp NULL,\n  ADD COLUMN `archivedBy` int NULL,\n  MODIFY COLUMN `status` enum('pending','assigned','picked_up','in_transit','delivered','failed','returned','cancelled') NOT NULL DEFAULT 'pending';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 21qwqa3fGSy7fki.cc8701c17183 --database 96zJ69HnhoCcXrCsRpdDxD --execute ALTER TABLE `orders`\n  ADD COLUMN `cancellationReason` text,\n  ADD COLUMN `cancelledAt` timestamp NULL,\n  ADD COLUMN `cancelledBy` int NULL,\n  ADD COLUMN `archivedAt` timestamp NULL,\n  ADD COLUMN `archivedBy` int NULL,\n  MODIFY COLUMN `status` enum('pending','assigned','picked_up','in_transit','delivered','failed','returned','cancelled') NOT NULL DEFAULT 'pending';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 950
+}
