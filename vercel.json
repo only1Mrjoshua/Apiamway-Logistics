@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://apiamway-logistics-backend.onrender.com/api/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ]
 }
