@@ -176,7 +176,7 @@ export default function Wallet() {
             <div className="flex items-end justify-between">
               <div>
                 <p className="text-4xl font-display font-bold text-primary">
-                  ₦{(parseFloat(balance?.balance || "0") / 100).toLocaleString("en-NG", {
+                  ₦{parseFloat(balance?.balance || "0").toLocaleString("en-NG", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}
@@ -250,14 +250,14 @@ export default function Wallet() {
                         }`}
                       >
                         {tx.type === "credit" ? "+" : "-"}₦
-                        {(tx.amount / 100).toLocaleString("en-NG", {
+                        {parseFloat(tx.amount).toLocaleString("en-NG", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
                         })}
                       </p>
                       <p className="text-xs text-slate-500">
                         Balance: ₦
-                        {(tx.balanceAfter / 100).toLocaleString("en-NG", {
+                        {parseFloat(tx.balanceAfter).toLocaleString("en-NG", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
                         })}

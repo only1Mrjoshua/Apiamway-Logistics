@@ -620,6 +620,7 @@ export async function getAllWallets(
   
   // Get paginated wallets with user info
   const allWallets = await db.select({
+    id: wallets.id,
     userId: wallets.userId,
     userName: users.name,
     userEmail: users.email,
@@ -638,14 +639,14 @@ export async function getAllWallets(
         amount: walletTransactions.amount,
       })
         .from(walletTransactions)
-        .where(eq(walletTransactions.walletId, wallet.userId));
+        .where(eq(walletTransactions.walletId, wallet.id));
       
       let totalCredited = 0;
       let totalDebited = 0;
       
       transactions.forEach((tx) => {
         const amount = parseFloat(tx.amount);
-        if (tx.type === "credit" || tx.type === "adjustment") {
+        if (tx.type === "credit" || tx.type === "bonus" || tx.type === "refund") {
           totalCredited += amount;
         } else if (tx.type === "debit") {
           totalDebited += amount;
@@ -690,7 +691,7 @@ export async function creditWallet(
   // Create transaction record
   await db.insert(walletTransactions).values({
     walletId,
-    type: adjustedByUserId ? "adjustment" : "credit",
+    type: "credit",
     amount: amount.toFixed(2),
     balanceBefore: balanceBefore.toFixed(2),
     balanceAfter: balanceAfter.toFixed(2),
@@ -739,7 +740,7 @@ export async function debitWallet(
   // Create transaction record
   await db.insert(walletTransactions).values({
     walletId,
-    type: adjustedByUserId ? "adjustment" : "debit",
+    type: "debit",
     amount: amount.toFixed(2),
     balanceBefore: balanceBefore.toFixed(2),
     balanceAfter: balanceAfter.toFixed(2),
