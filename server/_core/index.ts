@@ -89,7 +89,12 @@ async function startServer() {
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
-    serveStatic(app);
+    app.get("/", (_req, res) => {
+      res.json({
+        status: "ok",
+        service: "Apiamway backend",
+      });
+    });
   }
 
   const port = parseInt(process.env.PORT || "3000", 10);
