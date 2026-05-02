@@ -1394,14 +1394,18 @@ export const appRouter = router({
     // Admin: Get all partners
     getAll: adminProcedure
       .input(z.object({
-        status: z.enum(["pending", "approved", "suspended", "rejected"]).optional(),
+        status: z
+  .enum(["pending", "approved", "suspended", "rejected"])
+  .nullable()
+  .optional(),
         page: z.number().default(1),
         pageSize: z.number().default(20),
       }).optional())
       .query(async ({ input }) => {
         const page = input?.page || 1;
         const pageSize = input?.pageSize || 20;
-        const result = await db.getAllPartnerCompanies(input?.status, page, pageSize);
+        const status = input?.status ?? undefined;
+        const result = await db.getAllPartnerCompanies(status, page, pageSize);
         
         // Add fleet size for each partner
         const partnersWithFleet = await Promise.all(
@@ -1487,7 +1491,10 @@ export const appRouter = router({
         contactPhone: z.string().min(10).optional(),
         contactEmail: z.string().email().optional(),
         commissionPercentage: z.number().min(0).max(100).optional(),
-        status: z.enum(["pending", "approved", "suspended", "rejected"]).optional(),
+        status: z
+  .enum(["pending", "approved", "suspended", "rejected"])
+  .nullable()
+  .optional(),
       }))
       .mutation(async ({ input }) => {
         const { id, commissionPercentage, ...data } = input;

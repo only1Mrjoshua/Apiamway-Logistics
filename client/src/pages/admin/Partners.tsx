@@ -40,8 +40,11 @@ export default function Partners() {
     window.history.replaceState({}, '', newSearch ? `?${newSearch}` : window.location.pathname);
   }, [currentPage]);
 
+  const cleanStatus =
+    !statusFilter || statusFilter === "all" ? undefined : statusFilter;
+
   const { data, isLoading } = trpc.partners.getAll.useQuery({
-    status: statusFilter === "all" ? undefined : statusFilter as any,
+    status: cleanStatus as "pending" | "approved" | "suspended" | "rejected" | undefined,
     page: currentPage,
     pageSize,
   });
