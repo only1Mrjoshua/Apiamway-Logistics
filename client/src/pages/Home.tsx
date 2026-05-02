@@ -8,7 +8,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 export default function Home() {
   const [trackingId, setTrackingId] = useState("");
   const [, setLocation] = useLocation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
 
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              {!isAuthenticated && (
+              {!loading && !isAuthenticated && (
                 <Link href="/get-started">
                   <Button size="lg" className="h-14 px-8 text-lg rounded-none bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
                     Get Started <ArrowRight className="ml-2 w-5 h-5" />
@@ -270,7 +270,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Ready to move your business forward?</h2>
           <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">Join the hundreds of businesses in Enugu who trust Apiamway for their daily logistics.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {!isAuthenticated && (
+            {!loading && !isAuthenticated && (
               <Link href="/get-started">
                 <Button
                   size="lg"

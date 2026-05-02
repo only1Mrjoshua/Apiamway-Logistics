@@ -1,9 +1,50 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "wouter";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Facebook } from "lucide-react";
+import { useEffect } from "react";
+import { Link, useLocation } from "wouter";
 
 export default function Login() {
+  const { user, loading, isAuthenticated } = useAuth();
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (loading) return;
+    if (!isAuthenticated || !user) return;
+
+    if (user.role === "admin") {
+      setLocation("/admin");
+      return;
+    }
+
+    if (user.accountTypeIntent === "fleet_owner") {
+      setLocation("/fleet-owner/dashboard");
+      return;
+    }
+
+    setLocation("/");
+  }, [loading, isAuthenticated, user, setLocation]);
+
+  if (loading || isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+        <div className="text-center">
+          <div className="w-10 h-10 bg-primary mx-auto mb-4 flex items-center justify-center text-primary-foreground font-bold text-xl">
+            A
+          </div>
+          <p className="text-sm text-slate-600">Checking your session...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
       <Card className="w-full max-w-md border-0 shadow-xl rounded-none">
@@ -15,9 +56,7 @@ export default function Login() {
             <span className="font-display font-bold text-2xl">Apiamway</span>
           </Link>
 
-          <CardTitle className="text-2xl font-bold">
-            Welcome back
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
 
           <CardDescription>
             Sign in to continue to your Apiamway account
@@ -26,19 +65,14 @@ export default function Login() {
 
         <CardContent className="space-y-4">
           <a href="/api/auth/google" className="block">
-            <Button
-              variant="outline"
-              className="w-full h-12 rounded-none text-base"
-            >
+            <Button variant="outline" className="w-full h-12 rounded-none text-base">
               <span className="mr-3 font-bold text-lg">G</span>
               Continue with Google
             </Button>
           </a>
 
           <a href="/api/auth/facebook" className="block">
-            <Button
-              className="w-full h-12 rounded-none text-base bg-[#1877F2] hover:bg-[#166FE5] text-white"
-            >
+            <Button className="w-full h-12 rounded-none text-base bg-[#1877F2] hover:bg-[#166FE5] text-white">
               <Facebook className="mr-3 w-5 h-5" />
               Continue with Facebook
             </Button>
